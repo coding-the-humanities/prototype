@@ -1,0 +1,11 @@
+{
+  "name": "cth-cards",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.0.0-beta.13"
+  },
+  "dependencies": {
+    "traceur-runtime": "~0.0.66",
+    "firebase": "~1.1.0"
+  }
+}
