@@ -1,0 +1,14 @@
+<ion-view>
+  <ion-content>
+    <ion-list>
+     <section class="level" ng-repeat="level in groupedObjectives">
+      <ion-item class="item item-divider">
+          Level {{ $index }}
+       </ion-item>
+        <ion-item class="row progress-indicator" ng-repeat="objective in level" ng-click="goHome()">
+          <p class="col col-40">{{ objective.title }}</p>
+          <progress class="col col-40" ng-value={{objective.completed}} max=100></progress>
+        </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

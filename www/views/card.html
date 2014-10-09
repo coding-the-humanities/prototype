@@ -1,0 +1,26 @@
+<ion-view>
+  <ion-content>
+    <div class="list card">
+      <div class="item item-divider">
+        {{ card.title }}
+      </div>
+      <div class="item item-text-wrap">
+        <strong>Type: </strong>{{ card.type }}
+      </div>
+      <div class="item item-text-wrap">
+        <strong>Tags: </strong>
+        <span ng-repeat="tag in card.tags">{{ tag }} </span>
+      </div>
+      <div class="item item-text-wrap">
+        <strong>Premise: </strong>{{ card.premise }}
+      </div>
+      <div class="item item-text-wrap">
+        <strong>Exercise: </strong>{{ card.exercise }}
+      </div>
+      <div class="item item-text-wrap">
+        <strong>Material: </strong>
+        <span ng-repeat="material in card.materials">{{ material }} </span>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

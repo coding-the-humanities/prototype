@@ -1,0 +1,11 @@
+<ion-tabs class="tabs-striped tabs-background-light tabs-color-assertive slide-right-left-ios7">
+  <ion-tab title="Profile" icon-on="ion-person" icon-off="ion-person" href="app/profile">
+    <ion-nav-view name="tab-profile"></ion-nav-view>
+  </ion-tab>
+  <ion-tab title="Objectives" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" href="app/objectives">
+    <ion-nav-view name="tab-objectives"></ion-nav-view>
+  </ion-tab>
+  <ion-tab title="Card" icon-on="ion-ios7-paper" icon-off="ion-ios7-paper-outline" href="app/card">
+    <ion-nav-view name="tab-card"></ion-nav-view>
+  </ion-tab>
+</ion-tabs>
