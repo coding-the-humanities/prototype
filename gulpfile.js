@@ -10,7 +10,7 @@ var sh = require('shelljs');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
-  traceur: ['./es6/**/*.js']
+  traceur: ['./www/**/*.es6']
 };
 
 gulp.task('default', ['sass']);
@@ -31,7 +31,7 @@ gulp.task('traceur', function () {
   return gulp.src(paths.traceur)
   .pipe(traceur({experimental: true}))
   .pipe(concat('es5.js'))
-  .pipe(gulp.dest('./www/js'));
+  .pipe(gulp.dest('./www/app'));
 });
 
 gulp.task('watch', function() {
