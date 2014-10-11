@@ -8,12 +8,14 @@ app.controller('objectivesController', function(objectives, $state, userSession)
     $state.go('app.objective', {objectiveId: objectiveId});
   }
 
+  if(userSession.user.objectives){
+    var userObjectives = userSession.user.objectives;
+  } else {
+    userSession.user.objectives = {};
+    userObjectives = userSession.user.objectives;
+  }
+
   vm.addObjective = function(objective){
-
-    if(!userSession.user.objectives){
-      userSession.user.objectives = {};
-    }
-
     objective.tasks = objective.tasks.map(function(task){
       task.completed = false;
       return task;
@@ -22,10 +24,15 @@ app.controller('objectivesController', function(objectives, $state, userSession)
     userSession.user.objectives[objective.id] = objective;
 
     objective.added = true;
-    console.log(userSession);
   }
 
-  objectives.getObjectives().then(function(data){
-    vm.objectives = data;
+  objectives.getObjectives().then(function(objectives){
+    vm.objectives = objectives
+    vm.objectives.forEach(function(objective){
+      var added = _(userObjectives).find({'id': objective.id});
+      if(added){
+        objective.added = true;
+      }
+    });
   });
 });
