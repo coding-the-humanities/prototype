@@ -3,7 +3,7 @@
     <div class="list card">
       <div class="item item-avatar">
         <img src="https://avatars.githubusercontent.com/u/1780358?v=2">
-        <h2>{{ user.displayName }}</h2>
+        <h2>{{ user.name }}</h2>
         <p>August 23, 1975</p>
       </div>
 
@@ -13,6 +13,16 @@
           Log Out
         </button>
       </div>
-    </div>
+
+      <section class="level" ng-repeat="(key, value) in user.objectives | groupBy: 'level'">
+        <ion-item class="item-divider">
+          Level {{ key }}
+        </ion-item>
+        <ion-item class="item-icon-right" ng-repeat="objective in value">
+          <div ng-click="objectives.goHome(objective.id)">
+            {{ objective.title }}
+          </div>
+        </ion-item>
+      </section>
   </ion-content>
 </ion-view>

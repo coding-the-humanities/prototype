@@ -24,12 +24,12 @@ app.config(['$stateProvider', function($stateProvider){
     views: {
       'tab-objectives': {
         templateUrl:'app/objectives/objectives.html',
-        controller:'objectivesController'
+        controller:'objectivesController as objectives'
       }
     }
   })
-  .state('app.card',{
-    url:'/card',
+  .state('app.objective',{
+    url:'/card/:objectiveId',
     views: {
       'tab-card': {
         templateUrl:'app/cards/card.html',

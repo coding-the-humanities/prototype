@@ -1,8 +1,31 @@
-app.controller('objectivesController', function($scope){
-  $scope.goHome = function(){
-    $state.go('app.card');
+app.controller('objectivesController', function(objectives, $state, userSession){
+
+  var vm = this;
+
+  vm.objectives = [];
+
+  vm.goHome = function(objectiveId){
+    $state.go('app.objective', {objectiveId: objectiveId});
   }
 
-  $scope.groupedObjectives = _(objectives).groupBy('level').value();
-});
+  vm.addObjective = function(objective){
 
+    if(!userSession.user.objectives){
+      userSession.user.objectives = {};
+    }
+
+    objective.tasks = objective.tasks.map(function(task){
+      task.completed = false;
+      return task;
+    });
+
+    userSession.user.objectives[objective.id] = objective;
+
+    objective.added = true;
+    console.log(userSession);
+  }
+
+  objectives.getObjectives().then(function(data){
+    vm.objectives = data;
+  });
+});

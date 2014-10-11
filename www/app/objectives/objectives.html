@@ -1,14 +1,19 @@
 <ion-view>
   <ion-content>
     <ion-list>
-     <section class="level" ng-repeat="level in groupedObjectives">
-      <ion-item class="item item-divider">
-          Level {{ $index }}
-       </ion-item>
-        <ion-item class="row progress-indicator" ng-repeat="objective in level" ng-click="goHome()">
-          <p class="col col-40">{{ objective.title }}</p>
-          <progress class="col col-40" ng-value={{objective.completed}} max=100></progress>
+      <section class="level" ng-repeat="(key, value) in objectives.objectives | groupBy: 'level'">
+        <ion-item class="item-divider">
+          Level {{ key }}
         </ion-item>
+        <ion-item class="item-icon-right" ng-repeat="objective in value">
+            <div ng-click="objectives.goHome(objective.id)">
+              {{ objective.title }}
+            </div>
+            <div ng-hide="objective.added" ng-click="objectives.addObjective(objective)">
+              <i class="icon ion-ios7-plus"></i>
+            </div>
+        </ion-item>
+      </section>
     </ion-list>
   </ion-content>
 </ion-view>

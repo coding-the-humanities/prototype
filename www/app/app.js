@@ -1,4 +1,4 @@
-var app = angular.module('prototype', ['ionic', 'firebase']);
+var app = angular.module('prototype', ['ionic', 'firebase', 'angular.filter', 'LocalForageModule']);
 
 app.value('FIREBASE_REF','https://mobile-app.firebaseio.com/')
 app.value('userSession',{});
@@ -18,8 +18,11 @@ app.run(function($ionicPlatform, $rootScope, $state, userSession) {
   });
 
   $rootScope.$on('$firebaseSimpleLogin:login', function(event, user) {
-    userSession.user = user;
-    $state.go('app.card');
+    console.log(user);
+    userSession.user = {
+      name: user.displayName
+    };
+    $state.go('app.objectives');
   });
 
   $rootScope.$on('$firebaseSimpleLogin:error', function(event, error) {
