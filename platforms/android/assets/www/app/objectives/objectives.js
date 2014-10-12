@@ -1,11 +1,12 @@
 app.factory('objectives', function($q, $localForage, _){
   return {
     getObjectives: getObjectives,
-    getObjective: getObjective
+    getObjective: getObjective,
+    checkIfAdded: checkIfAdded
   }
 
   function getObjectives(){
-     return $localForage.getItem('objectives');
+    return $localForage.getItem('objectives');
   }
 
   function getObjective(id){
@@ -27,4 +28,13 @@ app.factory('objectives', function($q, $localForage, _){
     return deferred.promise;
   }
 
+  function checkIfAdded(all, selection){
+    return all.map(function(objective){
+      var added = _(selection).find({'id': objective.id});
+      if(added){
+        objective.added = true;
+      }
+      return objective;
+    });
+  }
 });
