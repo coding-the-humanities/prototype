@@ -1,0 +1,28 @@
+<ion-view>
+  <ion-content>
+    <div class="list card">
+      <div class="item item-avatar">
+        <img src="https://avatars.githubusercontent.com/u/1780358?v=2">
+        <h2>{{ user.name }}</h2>
+        <p>August 23, 1975</p>
+      </div>
+
+      <div class="item item-body">
+        <img class="full-image" src="http://calitreview.com/images/Rembrandt_Sheet%20of%20Studies%20with%20Self-Portrait_Rijksmuseum_7.jpg">
+        <button class="button button-block button-positive" ng-click="logout()">
+          Log Out
+        </button>
+      </div>
+
+      <section class="level" ng-repeat="(key, value) in user.objectives | groupBy: 'level'">
+        <ion-item class="item-divider">
+          Level {{ key }}
+        </ion-item>
+        <ion-item class="item-icon-right" ng-repeat="objective in value">
+          <div ng-click="objectives.goHome(objective.id)">
+            {{ objective.title }}
+          </div>
+        </ion-item>
+      </section>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view>
+  <ion-content>
+    <div class="list card">
+      <div class="item item-divider">
+        <h1>{{ card.title }}</h1>
+      </div>
+      <div class="item">
+        <h2>Level: {{ card.level }}</h2>
+        <progress value={{card.completed}} max=100></progress>
+      </div>
+      <div class="item item-divider">
+        <h2>Tasks</h2>
+      </div>
+      <div class="item item-checkbox" ng-repeat="task in card.tasks">
+        <label class="checkbox">
+          <input ng-model="task.completed" type="checkbox">
+        </label>
+        {{task.title}}
+      </label>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

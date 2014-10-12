@@ -1,0 +1,19 @@
+<ion-view>
+  <ion-content>
+    <ion-list>
+      <section class="level" ng-repeat="(key, value) in objectives.objectives | groupBy: 'level'">
+        <ion-item class="item-divider">
+          Level {{ key }}
+        </ion-item>
+        <ion-item class="item-icon-right" ng-repeat="objective in value">
+            <div ng-click="objectives.goHome(objective.id)">
+              {{ objective.title }}
+            </div>
+            <div ng-hide="objective.added" ng-click="objectives.addObjective(objective)">
+              <i class="icon ion-ios7-plus"></i>
+            </div>
+        </ion-item>
+      </section>
+    </ion-list>
+  </ion-content>
+</ion-view>
