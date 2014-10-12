@@ -5,7 +5,8 @@ app.value('userSession',{});
 app.value('Card',Card);
 app.value('_', _);
 
-app.run(function($ionicPlatform, $rootScope, $state, userSession) {
+app.run(function($ionicPlatform, $rootScope, $state, currentUser) {
+
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -18,10 +19,7 @@ app.run(function($ionicPlatform, $rootScope, $state, userSession) {
   });
 
   $rootScope.$on('$firebaseSimpleLogin:login', function(event, user) {
-    console.log(user);
-    userSession.user = {
-      name: user.displayName
-    };
+    currentUser.initialize(user);
     $state.go('app.objectives');
   });
 
