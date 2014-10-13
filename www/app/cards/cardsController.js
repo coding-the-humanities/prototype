@@ -3,7 +3,6 @@ app.controller('cardController', function($scope, objectives, $stateParams, Card
   $scope.card = {};
 
   objectives.getObjective(id).then(function(objective){
-    console.log(objective)
     $scope.card = objective;
   });
 });

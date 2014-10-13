@@ -1,10 +1,11 @@
-app.factory('currentUser', function($q, userSession, $localForage, objectives){
+app.factory('currentUser', function($q, userSession, $localForage){
 
   return {
     set: set,
     get: get,
     initialize: initialize,
     addObjective: addObjective,
+    removeObjective: removeObjective,
   }
 
   function set(user){
@@ -43,6 +44,16 @@ app.factory('currentUser', function($q, userSession, $localForage, objectives){
     get().then(function(user){
       user.objectives[objective.id] = objective;
       objective.added = true;
+      set(user);
+    }, function(error){
+      console.log(error);
+    });
+  }
+
+  function removeObjective(objective){
+    get().then(function(user){
+      delete user.objectives[objective.id]
+      objective.added = false;
       set(user);
     }, function(error){
       console.log(error);

@@ -8,6 +8,9 @@ app.controller('objectivesController', function(currentUser, objectives){
     currentUser.addObjective(objective)
   }
   
+  vm.removeObjective = function(objective){
+    currentUser.removeObjective(objective)
+  }
   initialize()
 
   return vm;
